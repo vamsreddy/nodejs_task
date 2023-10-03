@@ -1,0 +1,1 @@
+N: Skipping acquire of configured file 'main/binary-i386/Packages' as repository 'https://deb.nodesource.com/node_20.x nodistro InRelease' doesn't support architecture 'i386'
