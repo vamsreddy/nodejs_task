@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js ",
-    "start:prod": "NODE_ENV=production nodemon server.js"
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "udemy",
   "license": "ISC",
@@ -15,7 +16,8 @@
     "mongoose": "^5.13.20",
     "morgan": "^1.10.0",
     "slugify": "^1.6.6",
-    "superagent": "^8.1.2"
+    "superagent": "^8.1.2",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "eslint": "^8.50.0",
