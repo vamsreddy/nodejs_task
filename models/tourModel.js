@@ -14,7 +14,7 @@ const tourSchema = new mongoose.Schema({
       trim: true,
       maxlength: [40 , 'A tour must have less than 40 letters'],
       minlength: [10 , 'A tour must have more than 10 letters'],
-      // validate: [validator.isAlpha , 'name should only contain alphabtes'],
+      // validate: [validator.isAlpha , 'name should only contain alphabets'],
     },
     slug: String,
     duration:{
@@ -38,6 +38,7 @@ const tourSchema = new mongoose.Schema({
       default: 4.7,
       min: [1.0 , 'rating must be above 1.0'],
       max: [5.0 , 'rating must be below 5.0'],
+      set: val => Math.round(val * 10) / 10,
     },
     ratingsQuantity:{
         type: Number,
@@ -116,6 +117,10 @@ const tourSchema = new mongoose.Schema({
   toObject: { virtuals: true}
 }
 );
+
+tourSchema.index({price: 1, ratingsAverage: -1});
+tourSchema.index({slug: 1});
+tourSchema.index({startLocation: '2dsphere' });
 
 tourSchema.virtual('durationWeeks').get(function(){
   return this.duration / 7;
