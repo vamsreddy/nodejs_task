@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', authController.isLoggedIn, viewsController.getOverview);
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
-router.get('/tour/:slug', authController.isLoggedIn, viewsController.getTour);
+router.get('/car/:slug', authController.isLoggedIn, viewsController.getCar);
 router.get('/me', authController.protect, viewsController.getAccount);
 
 router.post(

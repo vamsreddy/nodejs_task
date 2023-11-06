@@ -3,6 +3,7 @@ import '@babel/polyfill';
 import{ login, logout} from './login';
 import {displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
+// import { bookCar } from './stripe';
 
 ///DOM Element
 
@@ -11,6 +12,8 @@ const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-settings');
+// const bookBtn = document.getElementById('book-car');
+// // console.log(bookBtn);
 
 /////////// DELEGATION //////////////////////////////////
 if (mapBox){
@@ -54,3 +57,14 @@ userPasswordForm.addEventListener('submit', async e => {
     document.getElementById('password').value;
     document.getElementById('password-confirm').value;
   }); 
+
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   const bookBtn = document.getElementById('book-car');
+// if (bookBtn) {
+//   bookBtn.addEventListener('click', (e) => {
+//     e.target.textContent = 'Processing...';
+//     const { carId } = e.target.dataset;
+//     bookCar(carId);
+//     });
+//   }
+  // });

@@ -1,38 +1,39 @@
-const Tour = require('../models/tourModel');
+// const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
+const Car = require('../models/carModel');
 
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  ////1) get tour data from collection
-  const tours = await Tour.find();
+  ////1) get car data from collection
+  const cars = await Car.find();
 
   ////2) build template
 
-  ////3) render that template using tour data from 1)
+  ////3) render that template using car data from 1)
   res.status(200).render('overview', {
-    title: 'All Tours',
-    tours,
+    title: 'All Cars',
+    cars,
   });
 });
 
-exports.getTour = catchAsync(async (req, res, next) => {
-  // 1) Get the data, for the requested tour (including reviews and guides)
-  const tour = await Tour.findOne({ slug: req.params.slug }).populate({
+exports.getCar = catchAsync(async (req, res, next) => {
+  // 1) Get the data, for the requested car (including reviews and guides)
+  const car = await Car.findOne({ slug: req.params.slug }).populate({
     path: 'reviews',
     fields: 'review rating user',
   });
 
-  if (!tour) {
-    return next(new AppError('There is no tour with that name.', 404));
+  if (!car) {
+    return next(new AppError('There is no car with that name.', 404));
   }
 
   // 2) Build template
   // 3) Render template using data from 1)
-  res.status(200).render('tour', {
-    title: `${tour.name} Tour`,
-    tour,
+  res.status(200).render('car', {
+    title: `${car.name} Car`,
+    car,
   });
 });
 
