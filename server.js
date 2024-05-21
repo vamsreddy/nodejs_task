@@ -25,7 +25,7 @@ const server = app.listen(port, () => {
   console.log(`App is running on ${port}...`);
 });
 
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   console.log('UNHANDLER REJECTION! Shutting Down.....');
   console.log(err.name, err.message);
   server.close(() => {
@@ -33,7 +33,7 @@ process.on('unhandledRejection', err => {
   });
 });
 
-process.on('uncaughtException', err => {
+process.on('uncaughtException', (err) => {
   console.log(err.name, err.message);
   console.log('UNCAUGHT EXCEPTION! Shutting Down.....');
   server.close(() => {
